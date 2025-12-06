@@ -36,8 +36,8 @@ class ModifiedImageEncoder(nn.Module):
     def __init__(self):
         super().__init__()
 
-        # Load the i3d resnet model
-        resnet = torchvision.models.resnet152(pretrained=True)
+        # Load the i3d resnet model with weights
+        resnet = torchvision.models.resnet152(weights=torchvision.models.ResNet152_Weights.IMAGENET1K_V1)
         i3_resnet = i3res.I3ResNet(
             copy.deepcopy(resnet),
             class_nb=1692,
